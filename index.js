@@ -12,7 +12,7 @@ inquirer.prompt(
         }, 
         {
             type: 'input',
-            message: 'how fo you install this app?',
+            message: 'how do you install this app?',
             name: 'install',
 
             validate: (val)=>{if(val){return true} else {return 'this must be filled out'}}
@@ -72,29 +72,31 @@ inquirer.prompt(
     Usage,
 })=>{
     const template = 
-    `# ${title}
+`# ${title}
     
-    - [Installation]{#Installation}
-    - [Usage]{#Usage}
-    - [Credits]{#Credits}
-    - [License]{#License}
-    #Installation
-    ${install}
-    ##Usage
-    ${Usage}
-    ##Instructions
-    ${instructions}
-    ##Credits
-    ${credits}
-    ##License
-    ${license}
-    
-    #Contact
-    * GITHub ${Git}
-    * Email ${email}`;
-    
-    createNewFile(title,template);  
+- [Installation]{#Installation}
+- [Usage]{#Usage}
+- [Credits]{#Credits}
+- [License]{#License}
+# Installation
+${install}
+## Usage
+${Usage}
+## Instructions
+${instructions}
+## Credits
+${credits}
+## License
+${license}
+
+# Contact
+* GITHub ${Git}
+* Email ${email}`;
+
+
+createNewFile(title,template);  
 });
+
 
 function createNewFile(filename,data){
     fs.writeFile(`./${filename.toLowerCase().split(' ').join('')}.md`,data,(err)=>{
